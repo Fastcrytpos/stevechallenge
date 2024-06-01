@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        #results{
+            border: 2px solid magenta;
+            
+            display:flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: start;
+            text-wrap:wrap;
+            flex-wrap: wrap;            
+            flex-grow: var();
+            flex-wrap: wrap;
+            width: 80%;
+            height:100px;
+            margin: auto;
+            padding:10px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            
+            
+            
+        }
+        button{
+            background-color: rgb(243, 181, 243);
+            display: block;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            margin:auto;
+            margin-top: 5px;
+        }
+        input{
+            width: 220px;
+            height: 30px;              
+            
+            
+        }
+        
+    </style>
+    <script>
+        function handleChange(event) {
+            console.log(event.target.value);
+            
+            bionictext=event.target.value
+            
+
+            
+            let results=bionictext.split(" ").map(word=>{
+                let midpoint=Math.ceil(word.length/2)
+                let firsthalf = (word.slice(0,midpoint))
+                let secondhalf=(word.slice(midpoint))
+                return `<span style="font-weight:bold;">${firsthalf}</span><span>${secondhalf}</span>`;
+            
+        })
+        console.log(results)
+        document.getElementById("results").innerHTML=results.join(" ") ;
+            
+        }
+    </script>
+</head>
+<body">
+    <div class="results">
+        <h1><u>BIONIC</u></h1>
+        <p>
+            The science of bionics uses knowledge about how biological systems work
+             to help solve engineering problems. 
+            Did you know you can convert the first half of words to bold.
+
+            
+        </p>
+
+        <div id="results"></div>
+        <p>Lets Try it Out. <br>
+        Shall we!</p>
+    </div>
+    <div class="textarea">
+        <input type="text" placeholder="enter text to convert to bionic" onchange="handleChange(event)">
+        <button type="button" > Convert</button>
+    </div>
+</body>
+</html>
